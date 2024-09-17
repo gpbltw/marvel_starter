@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { comicsList } from "../../redux/slices/comicsSlice";
 import { Link } from "react-router-dom";
 
 import useMarvelService from "../../services/MarvelService";
@@ -23,7 +25,8 @@ const setContent = (process, Component, newItemLoading) => {
 };
 
 const ComicsList = () => {
-  const [comicsList, setComicsList] = useState([]);
+  const setComicsList = useSelector((state) => state.comics.comics);
+  const dispatch = useDispatch();
   const [newItemLoading, setnewItemLoading] = useState(false);
   const [offset, setOffset] = useState(0);
   const [comicsEnded, setComicsEnded] = useState(false);
@@ -47,7 +50,7 @@ const ComicsList = () => {
     if (newComicsList.length < 8) {
       ended = true;
     }
-    setComicsList([...comicsList, ...newComicsList]);
+    dispatch(comicsList([...setComicsList, ...newComicsList]));
     setnewItemLoading(false);
     setOffset(offset + 8);
     setComicsEnded(ended);
@@ -75,7 +78,7 @@ const ComicsList = () => {
 
   return (
     <div className="comics__list">
-      {setContent(process, () => renderItems(comicsList), newItemLoading)}
+      {setContent(process, () => renderItems(setComicsList), newItemLoading)}
       <button
         disabled={newItemLoading}
         style={{ display: comicsEnded ? "none" : "block" }}

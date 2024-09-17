@@ -2,5 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./components/app/App";
 import "./style/style.scss";
+import { Provider } from "react-redux";
+import store from "./redux/store";
 
-ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+root.render(
+  <Provider store={store}>
+    <App />
+  </Provider>
+);

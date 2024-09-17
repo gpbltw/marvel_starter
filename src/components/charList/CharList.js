@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef, useMemo } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { charList } from "../../redux/slices/charSlice";
 import PropTypes from "prop-types";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-
 import Spinner from "../spinner/Spinner";
 import ErrorMessage from "../errorMessage/ErrorMessage";
 import useMarvelService from "../../services/MarvelService";
@@ -24,7 +25,8 @@ const setContent = (process, Component, newItemLoading) => {
 };
 
 const CharList = (props) => {
-  const [charList, setCharList] = useState([]);
+  const setCharList = useSelector((state) => state.characters.characters);
+  const dispatch = useDispatch();
   const [newItemLoading, setnewItemLoading] = useState(false);
   const [offset, setOffset] = useState(210);
   const [charEnded, setCharEnded] = useState(false);
@@ -47,7 +49,7 @@ const CharList = (props) => {
     if (newCharList.length < 9) {
       ended = true;
     }
-    setCharList([...charList, ...newCharList]);
+    dispatch(charList([...setCharList, ...newCharList]));
     setnewItemLoading(false);
     setOffset(offset + 9);
     setCharEnded(ended);
@@ -105,7 +107,7 @@ const CharList = (props) => {
   }
 
   const elements = useMemo(() => {
-    return setContent(process, () => renderItems(charList), newItemLoading);
+    return setContent(process, () => renderItems(setCharList), newItemLoading);
   }, [process]);
 
   return (

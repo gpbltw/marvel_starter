@@ -1,5 +1,6 @@
-import { useState } from "react";
 import { Helmet } from "react-helmet";
+import { useSelector, useDispatch } from "react-redux";
+import { selectChar } from "../../redux/slices/charSlice";
 
 import RandomChar from "../randomChar/RandomChar";
 import CharList from "../charList/CharList";
@@ -10,10 +11,11 @@ import ErrorBoundary from "../errorBoundary/ErrorBoundary";
 import decoration from "../../resources/img/vision.png";
 
 const MainPage = () => {
-  const [selectedChar, setChar] = useState(null);
+  const selectedChar = useSelector((state) => state.characters.selectedChar);
+  const dispatch = useDispatch();
 
   const onCharSelected = (id) => {
-    setChar(id);
+    dispatch(selectChar(id));
   };
 
   return (

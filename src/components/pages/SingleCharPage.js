@@ -1,4 +1,4 @@
-import "./singleCharPage.scss"; // Допустим, вы создали файл со стилями для персонажей
+import "./singleCharPage.scss";
 
 const CharView = ({ data }) => {
   const { name, description, thumbnail } = data;
