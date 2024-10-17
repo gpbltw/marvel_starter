@@ -58,11 +58,17 @@ const CharList = (props) => {
   const itemRefs = useRef([]);
 
   const focusOnItem = (id) => {
-    itemRefs.current.forEach((item) =>
-      item.classList.remove("char__item_selected")
-    );
-    itemRefs.current[id].classList.add("char__item_selected");
-    itemRefs.current[id].focus();
+    itemRefs.current.forEach((item) => {
+      if (item) {
+        // Проверяем, что элемент существует
+        item.classList.remove("char__item_selected");
+      }
+    });
+    if (itemRefs.current[id]) {
+      // Проверяем, что нужный элемент существует
+      itemRefs.current[id].classList.add("char__item_selected");
+      itemRefs.current[id].focus();
+    }
   };
 
   function renderItems(arr) {
