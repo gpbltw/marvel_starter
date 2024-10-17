@@ -1,70 +1,59 @@
-# Getting Started with Create React App
+# Большой проект на React Redux по вселенной Marvel с использованием стороннего API
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Описание
 
-## Available Scripts
+Проект разработан с использованием React и Redux Toolkit, основной целью была практика работы с крупным и сложным API. Проект включает несколько страниц, реализует множество функций и использует актуальные технологии.
 
-In the project directory, you can run:
+Источник API: https://developer.marvel.com/
 
-### `yarn start`
+## Функционал
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Имеется карточка со случайными героями. Есть возможность перейти на его домашнюю или вики-страницу на официальном сайте Marvel.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+![image](https://github.com/user-attachments/assets/01362d32-036f-4749-92a2-24ce6516b19a)
 
-### `yarn test`
+- Персонаж автоматически обновляется каждые заданные в коде N секунд (например, 3000 мс).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![Запись 2024-10-17 160332](https://github.com/user-attachments/assets/bdd29c77-02bd-481e-b056-bdf306e0f26b)
 
-### `yarn build`
+- Также можно запросить нового случайного персонажа вручную, нажав кнопку.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![Запись 2024-10-17 160719](https://github.com/user-attachments/assets/b4692603-8627-49b9-8aa7-ab1b2bb3e02d)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Пользователь может получить полную информацию о выбранном персонаже, нажав на карточку персонажа.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![Запись 2024-10-17 204007](https://github.com/user-attachments/assets/78c28352-d7cd-475f-a4cc-bdd1fe73b841)
 
-### `yarn eject`
+- Реализован поиск конкретного персонажа в базе данных Marvel.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+![Запись 2024-10-17 204247](https://github.com/user-attachments/assets/b8ba06ab-1a0e-4855-bf22-0dbbab978835)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Если введённое имя персонажа не найдено, выводится соответствующее сообщение.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+![image](https://github.com/user-attachments/assets/4c1213cf-515d-49ac-9f5f-bf44f2b2f0a6)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- Динамическая подгрузка списка персонажей
 
-## Learn More
+Список персонажей подгружается динамически до тех пор, пока не будет загружена вся доступная информация.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+![Запись 2024-10-17 204902](https://github.com/user-attachments/assets/0b2ce461-0250-40a7-8400-2560ffc861ef)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Отдельная страница с комиксами
 
-### Code Splitting
+Здесь пользователи могут просматривать список комиксов, кликать на каждый из них и получать подробную информацию.
+Как и в случае с персонажами, список комиксов подгружается динамически.
+Реализована маршрутизация с помощью библиотеки react-router-dom, что позволяет сохранять принцип одностраничного приложения (SPA).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+![Запись 2024-10-17 210420](https://github.com/user-attachments/assets/a81a226d-6ebe-4c3c-962e-4adee77c0597)
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Технологии
+- Работа с Marvel API
+- ReactJS 18
+- Redux Toolkit
+- Skeletonreact (для создания скелетона)
+- Custom hooks
+- React router (для соблюдения принципа SPA)
+- React helmet (для закрепления позиционирования хедера на всех страницах)
+- Formik (для форм)
+- Yup (для валидации форм)
+- SCSS (стилизация)
